@@ -36,6 +36,10 @@ void Shape_Constructor(Shape* const me, int x, int y) {
 	me->y;
 }
 
+int Shape_area(Shape* const me) {
+  return (*me->vptr->area)(me);
+}
+
 //
 // Rectangle Class
 //
