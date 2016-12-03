@@ -33,5 +33,8 @@ void Shape_Constructor(Shape* const me, int x, int y) {
 }
 
 int main(void) {
+  Shape s1;
+	
+	Shape_Constructor(&s1,1,2);
   return 0;
 }
