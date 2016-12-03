@@ -69,6 +69,24 @@ void Rectangle_Constructor(Rectangle* const me, int x, int y, int width, int hei
 	me->height=height;
 }
 
+//
+// Application
+//
+
+Shape const *largestShape(Shape const *shapes[], int nShapes) {
+  Shape const *s = NULL;
+	int max = 0;
+	int loop;
+	for (loop=0; loop<nShapes;++loop) {
+	  int area = Shape_area(shapes[loop]);
+		if (area>max) {
+		  max = area;
+			s = shapes[loop];
+		}
+	}
+	return s;
+}
+
 int main(void) {
   Shape s1;
 	Rectangle r1;
