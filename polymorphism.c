@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <assert.h>
 
+//
+// Shape Class
+//
+
 struct ShapeVtbl;
 typedef struct {
   struct ShapeVtbl const *vptr;
@@ -30,6 +34,35 @@ void Shape_Constructor(Shape* const me, int x, int y) {
 	
 	me->x;
 	me->y;
+}
+
+//
+// Rectangle Class
+//
+
+typedef struct {
+  Shape super;
+	int width;
+	int height;
+} Rectangle;
+
+static int Rectangle_area_ (Shape* const me){
+  // Explicit downcast
+  Rectangle* const me_ = (Rectangle*) me;
+	return me_->width * me_->height;
+};
+static void Rectangle_draw_ (Shape* const me){
+};
+
+void Rectangle_Constructor(Rectangle* const me, int x, int y, int width, int height) {
+  static struct ShapeVtbl const vtbl = {
+	  &Rectangle_area_,
+		&Rectangle_draw_
+	};
+	me->super.vptr = &vtbl;
+	
+	me->width=width;
+	me->height=height;
 }
 
 int main(void) {
