@@ -67,7 +67,10 @@ void Rectangle_Constructor(Rectangle* const me, int x, int y, int width, int hei
 
 int main(void) {
   Shape s1;
+	Rectangle r1;
 	
 	Shape_Constructor(&s1,1,2);
+	Rectangle_Constructor(&r1,1,2,3,4);
+	
   return 0;
 }
